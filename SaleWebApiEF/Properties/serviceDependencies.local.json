@@ -3,6 +3,22 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "SalesContext"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "OrderContext"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ProductsContext"
+    },
+    "mssql4": {
+      "type": "mssql.local",
+      "connectionId": "SaleWebApiEFContext"
+    },
+    "mssql5": {
+      "type": "mssql.local",
+      "connectionId": "Context"
     }
   }
 }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using SaleWebApiEF.Data;
+using SaleWebApiEF.Controllers;
+
 
 namespace SaleWebApiEF
 {
@@ -29,7 +31,13 @@ namespace SaleWebApiEF
             services.AddControllers();
 
             services.AddDbContext<SalesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesDB")));
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("SalesDB"));
+            }); 
+
+            
+            
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +48,8 @@ namespace SaleWebApiEF
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -48,6 +58,10 @@ namespace SaleWebApiEF
             {
                 endpoints.MapControllers();
             });
+            using(var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetService<SalesContext>().Database.Migrate();
+            }
         }
     }
 }

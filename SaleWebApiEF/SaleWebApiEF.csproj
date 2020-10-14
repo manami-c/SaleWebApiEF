@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201014195057_Customer Code must be unique.cs" />
+    <Compile Remove="Migrations\20201014195057_Customer Code must be unique.Designer.cs" />
+    <Compile Remove="Migrations\20201014195636_fixed thigs.cs" />
+    <Compile Remove="Migrations\20201014195636_fixed thigs.Designer.cs" />
+    <Compile Remove="Migrations\20201014200016_please be fixed.cs" />
+    <Compile Remove="Migrations\20201014200016_please be fixed.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.sqlserver" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
